@@ -25,8 +25,8 @@ const AddTask = () => {
     //close modal after adding task
     document.getElementById("my_modal_1").close();
 
-    //reload after adding a new task
-    window.location.reload();
+    // //reload after adding a new task
+    // window.location.reload();
   };
 
   return (
