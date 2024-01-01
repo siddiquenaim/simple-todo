@@ -1,23 +1,33 @@
+"use client";
+
 const ToDoList = () => {
+  const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-            </tr>
-          </tbody>
-        </table>
+        {existingTasks?.length === 0 ? (
+          <p>No tasks added</p>
+        ) : (
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr className="text-center">
+                <th>Task</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {existingTasks?.map((singleTask) => (
+                <tr key={singleTask?.id} className="text-center">
+                  <td>{singleTask?.taskName}</td>
+                  <td>{singleTask?.isCompleted ? "Completed" : "Pending"}</td>
+                </tr>
+              ))}
+              {/* row 1 */}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
